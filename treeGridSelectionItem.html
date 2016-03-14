@@ -1,0 +1,7 @@
+<input type="{{columns.columnType }}"
+		ng-model="model.isChecked"
+		ng-change="markChilds(model, $event)" 
+		ng-click="$event.cancelBubble = true"
+		ng-indeterminate="model.indetermine"
+		name="{{ model.type }}"></input>
+<span ng-class="model.type">{{ model[columns.nameField] }}</span>

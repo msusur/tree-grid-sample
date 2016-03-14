@@ -1,0 +1,14 @@
+<script type="ng-template" id="tree">
+	<tree-grid-item model="model" columns="columns" group="subscription"> </tree-grid-item>
+		<ul ng-show="model.display" ng-if="model.childs">  
+			<li ng-repeat="child in model.childs" ng-include="tree" ng-click="onChildSelected(child, true, $event)">
+			</li>
+		</ul>	
+</script>
+
+
+<ul>
+	<li ng-repeat="model in data" ng-click="onChildSelected(model, true, $event)" ng-include="tree">  
+	</li>
+</ul>
+
