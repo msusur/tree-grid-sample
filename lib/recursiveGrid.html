@@ -1,6 +1,6 @@
 <ul>
 	<li ng-repeat="model in data">  
-		<tree-grid-item model="model" columns="columns" group="subscription"> </tree-grid-item>
+		<tree-grid-item model="model" on-selected="onSelected(row)" columns="columns" group="subscription"> </tree-grid-item>
 	</li>
 </ul>
 	<span ng-click="changePage(-1)"> &lt; </span>

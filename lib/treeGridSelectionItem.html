@@ -1,15 +1,12 @@
-<div ng-click="toggle(model)">
-
 <input type="{{columns.columnType }}"
 		ng-model="model.isChecked"
 		ng-change="markChilds(model, $event)" 
-		ng-click="$event.cancelBubble = true"
+		ng-click="$event.cancelBubble = true;"
 		ng-indeterminate="model.indetermine"
 		name="selection"></input>
-<span ng-class="model.type">{{ model[columns.nameField] }}</span>
+<span ng-click="model.display = !model.display;onSelected(model);" ng-class="model.type">{{ model[columns.nameField] }}</span>
 <ul ng-show="model.display" ng-if="model.children.length > 0"> 
-	<li ng-repeat="child in model.children" ng-click="onChildSelected(child, true, $event)"> 
+	<li ng-repeat="child in model.children" ng-click="$parent.onChildSelected(child, true, $event)"> 
 		<tree-grid-item model="child" parent="model" columns="columns" group="service"></tree-grid-item>
 	</li>
 </ul>
-</div>
