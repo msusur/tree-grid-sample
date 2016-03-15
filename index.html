@@ -9,8 +9,7 @@
 	</head>
 	<body ng-app="demo">
 		<div ng-controller="defaultCtl">
-
-			<search-Box title="searchModel.title" 
+			<search-box title="searchModel.title" 
 						input-text="searchModel.text" 
 						on-search-clicked="onSearchClicked()" 
 						button-model="searchModel.button"></search-box>
@@ -21,7 +20,7 @@
 						current-page="currentPage"
 						on-page-change="pageChanged()"
 						on-selected="selected(row)"></tree-grid>
-						
+
 			selected name: {{ selectedItem.name }} <br/>
 			selected name: {{ selectedItem.isChild }} <br/>
 			page is : {{currentPageIs }}
@@ -46,7 +45,7 @@
 				};
 
 				$scope.columnModel = {
-						"columnType" : "checkbox",
+						"columnType" : "radio",
 						"nameField" : "name"
 				};
 
@@ -60,16 +59,16 @@
 					$scope.currentPageIs = $scope.currentPage + 1;
 				};
 
-
 				$scope.dataModel = [
-					{"name": "Subscription1", "type":"subscription", "childs" : [
+					{"name": "One level child", "type":"subscription", "children" : [
 							{"name": "Value 1", "value": 1,"type":"service"}, 
-							{"name": "Value 2", "value": 2,"type":"service"}, 
 							{"name": "Value 3", "value": 3,"type":"service"}
 					]},
-					{"name": "Subscription2", "type":"subscription", "childs" : [
+					{"name": "No Child", "type":"subscription" },
+					{"name": "two level child", "type":"subscription", "children" : [
 							{"name": "Value 1", "value": 1,"type":"service"}, 
-							{"name": "Value 2", "value": 2,"type":"service"}, 
+							{"name": "Value 2", "value": 2,"type":"service", 
+							"children": [ {"name": "Value 1", "value": 1,"type":"service"}]}, 
 							{"name": "Value 3", "value": 3,"type":"service"}
 					]}
 				];

@@ -1,0 +1,9 @@
+<ul>
+	<li ng-repeat="model in data">  
+		<tree-grid-item model="model" columns="columns" group="subscription"> </tree-grid-item>
+	</li>
+</ul>
+	<span ng-click="changePage(-1)"> &lt; </span>
+	<span> Page : {{currentPage}} </span>
+	<span ng-click="changePage(1)"> &gt; </span>
+<ul>
