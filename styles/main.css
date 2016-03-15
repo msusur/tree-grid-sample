@@ -2,6 +2,12 @@
 	background-color: red;
 }
 
+.selectable{
+	cursor: pointer;
+}
+
+
+
 .service{
 	background-color: blue;
 }

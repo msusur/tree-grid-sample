@@ -3,13 +3,28 @@
 		<link rel="stylesheet" href="/styles/main.css" />
 
 		<script src="/node_modules/angular/angular.js"></script>
-		<script src="tree-grid.js"></script>
+		<script src="/lib/component.js"></script>
+		<script src="/lib/tree-grid.js"></script>
+		<script src="/lib/search.js"></script>
 	</head>
 	<body ng-app="demo">
 		<div ng-controller="defaultCtl">
-			<tree-grid data="dataModel" columns="columnModel" on-selected="selected(row)"></tree-grid>
+
+			<search-Box title="searchModel.title" 
+						input-text="searchModel.text" 
+						on-search-clicked="onSearchClicked()" 
+						button-model="searchModel.button"></search-box>
+
+			<tree-grid data="dataModel" 
+						columns="columnModel" 
+						max-page-count="pageCount"
+						current-page="currentPage"
+						on-page-change="pageChanged()"
+						on-selected="selected(row)"></tree-grid>
+						
 			selected name: {{ selectedItem.name }} <br/>
-			selected name: {{ selectedItem.isChild }} 
+			selected name: {{ selectedItem.isChild }} <br/>
+			page is : {{currentPageIs }}
 		</div>
 		
 	</body>
@@ -18,6 +33,18 @@
 		(function(angular){
 			var m = angular.module("demo", ["components"]);
 			m.controller("defaultCtl", ["$scope", function($scope){
+
+				$scope.onSearchClicked = function(){
+					alert($scope.searchModel.text);
+				};
+
+				$scope.searchModel = {
+					'title': "oo search!",
+					'button': {
+						'label' : 'Click Me!'
+					}
+				};
+
 				$scope.columnModel = {
 						"columnType" : "checkbox",
 						"nameField" : "name"
@@ -25,6 +52,12 @@
 
 				$scope.selected = function(row){
 					$scope.selectedItem = row;
+				};
+
+				$scope.pageCount = 4;
+
+				$scope.pageChanged = function(){
+					$scope.currentPageIs = $scope.currentPage + 1;
 				};
 
 
