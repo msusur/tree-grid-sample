@@ -19,7 +19,7 @@
 						max-page-count="pageCount"
 						current-page="currentPage"
 						on-page-change="pageChanged()"
-						on-selected="selected(row)"></tree-grid>
+						selected-item="selectedItem"></tree-grid>
 
 			selected name: {{ selectedItem.name }} <br/>
 			selected name: {{ selectedItem.isChild }} <br/>
@@ -49,14 +49,10 @@
 						"nameField" : "name"
 				};
 
-				$scope.selected = function(row){
-					$scope.selectedItem = row;
-				};
-
 				$scope.pageCount = 4;
 
 				$scope.pageChanged = function(){
-					$scope.currentPageIs = $scope.currentPage + 1;
+					$scope.currentPageIs = $scope.currentPage;
 				};
 
 				$scope.dataModel = [

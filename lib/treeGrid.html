@@ -1,11 +1,6 @@
 <ul>
-	<li ng-repeat="model in data" ng-click="toggle(model)" >  
-		<tree-grid-item model="model" columns="columns" group="subscription"> </tree-grid-item>
-		<ul ng-show="model.display"> 
-			<li ng-repeat="child in model.childs" ng-click="onChildSelected(child, true, $event)"> 
-				<tree-grid-item model="child" parent="model" columns="columns" group="service"></tree-grid-item>
-			</li>
-		</ul>
+	<li ng-repeat="model in data">  
+		<tree-grid-item model="model" selection="$parent.selectedItem" columns="columns" group="subscription"> </tree-grid-item>
 	</li>
 </ul>
 	<span ng-click="changePage(-1)"> &lt; </span>

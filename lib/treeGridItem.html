@@ -1,0 +1,15 @@
+<input type="{{columns.columnType }}"
+		ng-model="model.isChecked"
+		ng-change="markChilds(model)"
+		value="{{model.name}}"
+		ng-indeterminate="model.indetermine"
+		name="selection"></input>
+<span ng-click="selectedChange(model);" ng-class="model.type">{{ model[columns.nameField] }}</span>
+<ul ng-show="model.display" ng-if="model.children.length > 0"> 
+	<li ng-repeat="child in model.children"> 
+		<tree-grid-item model="child" 
+						parent="model" 
+						selection="$parent.$parent.selectedItem"
+						columns="columns"></tree-grid-item>
+	</li>
+</ul>
