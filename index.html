@@ -21,8 +21,7 @@
 						on-page-change="pageChanged()"
 						selected-item="selectedItem"></tree-grid>
 
-			selected name: {{ selectedItem.name }} <br/>
-			selected name: {{ selectedItem.isChild }} <br/>
+			selected name: {{ selectedItem.value.name }} <br/>
 			page is : {{currentPageIs }}
 		</div>
 		
@@ -56,16 +55,16 @@
 				};
 
 				$scope.dataModel = [
-					{"name": "One level child", "type":"subscription", "children" : [
-							{"name": "Value 1", "value": 1,"type":"service"}, 
-							{"name": "Value 3", "value": 3,"type":"service"}
+					{"name": "One level child", "type":"subscription", value:1, "children" : [
+							{"name": "Value 1", "value": 11,"type":"service"}, 
+							{"name": "Value 3", "value": 12,"type":"service"}
 					]},
-					{"name": "No Child", "type":"subscription" },
-					{"name": "two level child", "type":"subscription", "children" : [
-							{"name": "Value 1", "value": 1,"type":"service"}, 
-							{"name": "Value 2", "value": 2,"type":"service", 
-							"children": [ {"name": "Value 1", "value": 1,"type":"service"}]}, 
-							{"name": "Value 3", "value": 3,"type":"service"}
+					{"name": "No Child", "type":"subscription", value:2 },
+					{"name": "two level child", "type":"subscription", value:3, "children" : [
+							{"name": "Value 1", "value": 31,"type":"service"}, 
+							{"name": "Value 2", "value": 32,"type":"service", 
+							"children": [ {"name": "Value 1", "value": 321,"type":"service"}]}, 
+							{"name": "Value 3", "value": 33,"type":"service"}
 					]}
 				];
 			}]);

@@ -1,6 +1,22 @@
 <ul>
 	<li ng-repeat="model in data">  
-		<tree-grid-item model="model" selection="$parent.selectedItem" columns="columns" group="subscription"> </tree-grid-item>
+		<!--<tree-grid-item model="model" selection="$parent.selectedItem" columns="columns" group="subscription"> </tree-grid-item> -->
+		<input type="radio"
+			ng-model="$parent.selectedItem.value"
+			ng-change="markChilds(model)"
+			ng-value="model"
+			name="selection"></input>
+		<span ng-click="selectedChange(model);" ng-class="model.type">{{ model[columns.nameField] }}</span>
+		<ul ng-show="model.display" ng-if="model.children.length > 0"> 
+			<li ng-repeat="child in model.children"> 
+				<input type="radio"
+						ng-model="$parent.$parent.selectedItem.value"
+						ng-change="markChilds(child)"
+						ng-value="child"
+						name="selection"></input>
+				<span ng-click="selectedChange(child);" ng-class="child.type">{{ child[columns.nameField] }}</span>
+			</li>
+		</ul>
 	</li>
 </ul>
 	<span ng-click="changePage(-1)"> &lt; </span>
