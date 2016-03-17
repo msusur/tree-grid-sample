@@ -7,9 +7,21 @@
 <span ng-click="selectedChange(model);" ng-class="model.type">{{ model[columns.nameField] }}</span>
 <ul ng-show="model.display" ng-if="model.children.length > 0"> 
 	<li ng-repeat="child in model.children"> 
-		<tree-grid-item model="child" 
-						parent="model" 
-						selection="$parent.$parent.selectedItem"
-						columns="columns"></tree-grid-item>
+		<input type="{{columns.columnType }}"
+				ng-model="child.isChecked"
+				ng-change="markChilds(child)"
+				value="{{child.name}}"
+				ng-indeterminate="child.indetermine"
+				name="selection"></input>
+		<span ng-click="selectedChange(child);" ng-class="child.type">{{ child[columns.nameField] }}</span>
+		<!--<ul ng-show="child.display" ng-if="child.children.length > 0"> 
+			<li ng-repeat="child in child.children"> 
+				<tree-grid-item model="child" 
+								parent="model" 
+								selection="$parent.$parent.selectedItem"
+								columns="columns"></tree-grid-item>
+			</li>
+		</ul>-->	
+
 	</li>
 </ul>
