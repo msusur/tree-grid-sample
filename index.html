@@ -53,7 +53,16 @@
 				$scope.pageChanged = function(){
 					$scope.currentPageIs = $scope.currentPage;
 				};
+				$scope.dataModel = [
+					{"name": "two level child", "type":"subscription", value:3, "children" : [
+							{"name": "Value 1", "value": 31,"type":"service"}, 
+							{"name": "Value 2", "value": 32,"type":"service", 
+							"children": [ {"name": "Value 1", "value": 321,"type":"service"}]}, 
+							{"name": "Value 3", "value": 33,"type":"service"}
+					]}
+				];
 
+				/*
 				$scope.dataModel = [
 					{"name": "One level child", "type":"subscription", value:1, "children" : [
 							{"name": "Value 1", "value": 11,"type":"service"}, 
@@ -66,7 +75,7 @@
 							"children": [ {"name": "Value 1", "value": 321,"type":"service"}]}, 
 							{"name": "Value 3", "value": 33,"type":"service"}
 					]}
-				];
+				];*/
 			}]);
 		})(angular);
 	</script>
